@@ -4,715 +4,270 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PM Prompts Hub - 产品经理提示词工具箱</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            200: '#bae6fd',
+                            300: '#7dd3fc',
+                            400: '#38bdf8',
+                            500: '#0ea5e9',
+                            600: '#0284c7',
+                            700: '#0369a1',
+                            800: '#075985',
+                            900: '#0c4a6e',
+                        },
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.3s ease-in',
+                        'slide-up': 'slideUp 0.4s ease-out',
+                        'scale-in': 'scaleIn 0.2s ease-out',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        slideUp: {
+                            '0%': { transform: 'translateY(20px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' },
+                        },
+                        scaleIn: {
+                            '0%': { transform: 'scale(0.95)', opacity: '0' },
+                            '100%': { transform: 'scale(1)', opacity: '1' },
+                        },
+                    },
+                }
+            }
+        }
+    </script>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+        * { font-family: 'Inter', sans-serif; }
+
+        .gradient-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
         }
 
-        body {
-            font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
-            background: #fafafa;
-            color: #202124;
-            line-height: 1.6;
+        .gradient-card {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
         }
 
-        /* Header */
-        .header {
-            background: white;
-            border-bottom: 1px solid #dadce0;
-            padding: 0 24px;
-            height: 64px;
-            display: flex;
-            align-items: center;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            box-shadow: 0 1px 2px 0 rgba(60,64,67,.3), 0 1px 3px 1px rgba(60,64,67,.15);
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
         }
 
-        .header-content {
-            max-width: 1440px;
-            margin: 0 auto;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            width: 100%;
+        .card-hover {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        .logo-container {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .logo-icon {
-            width: 32px;
-            height: 32px;
-            background: linear-gradient(135deg, #1a73e8 0%, #34a853 100%);
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 18px;
-        }
-
-        .logo {
-            font-family: 'Google Sans', sans-serif;
-            font-size: 22px;
-            font-weight: 500;
-            color: #5f6368;
-            letter-spacing: -0.5px;
-        }
-
-        .lang-toggle {
-            background: transparent;
-            border: 1px solid #dadce0;
-            border-radius: 24px;
-            padding: 8px 20px;
-            cursor: pointer;
-            font-size: 14px;
-            font-weight: 500;
-            color: #1a73e8;
-            transition: all 0.2s;
-        }
-
-        .lang-toggle:hover {
-            background: #f8f9fa;
-            border-color: #1a73e8;
-        }
-
-        /* Main Content */
-        .container {
-            max-width: 1440px;
-            margin: 0 auto;
-            padding: 40px 24px 80px;
-        }
-
-        /* Page Title */
-        .page-title {
-            margin-bottom: 32px;
-        }
-
-        .page-title h1 {
-            font-family: 'Google Sans', sans-serif;
-            font-size: 36px;
-            font-weight: 400;
-            color: #202124;
-            margin-bottom: 8px;
-        }
-
-        .page-subtitle {
-            font-size: 14px;
-            color: #5f6368;
-            line-height: 1.5;
-        }
-
-        /* Stats Section */
-        .stats {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 20px;
-            margin-bottom: 32px;
-        }
-
-        .stat-card {
-            background: white;
-            border-radius: 12px;
-            padding: 24px;
-            border: 1px solid #dadce0;
-            transition: all 0.2s;
-        }
-
-        .stat-card:hover {
-            box-shadow: 0 1px 3px 0 rgba(60,64,67,.3), 0 4px 8px 3px rgba(60,64,67,.15);
-            transform: translateY(-2px);
-        }
-
-        .stat-icon {
-            width: 48px;
-            height: 48px;
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 24px;
-            margin-bottom: 16px;
-        }
-
-        .stat-icon.primary {
-            background: #e8f0fe;
-        }
-
-        .stat-icon.success {
-            background: #e6f4ea;
-        }
-
-        .stat-icon.warning {
-            background: #fef7e0;
-        }
-
-        .stat-value {
-            font-family: 'Google Sans', sans-serif;
-            font-size: 36px;
-            font-weight: 500;
-            color: #202124;
-            margin-bottom: 4px;
-            line-height: 1;
-        }
-
-        .stat-label {
-            font-size: 14px;
-            color: #5f6368;
-            font-weight: 500;
-        }
-
-        /* Search and Filters */
-        .controls {
-            background: white;
-            border-radius: 12px;
-            padding: 24px;
-            margin-bottom: 32px;
-            border: 1px solid #dadce0;
-        }
-
-        .search-box {
-            position: relative;
-            margin-bottom: 20px;
-        }
-
-        .search-box input {
-            width: 100%;
-            padding: 14px 20px 14px 52px;
-            border: 1px solid #dadce0;
-            border-radius: 28px;
-            font-size: 16px;
-            outline: none;
-            transition: all 0.2s;
-            background: #f8f9fa;
-        }
-
-        .search-box input:focus {
-            background: white;
-            border-color: #1a73e8;
-            box-shadow: 0 1px 6px rgba(26, 115, 232, 0.3);
-        }
-
-        .search-icon {
-            position: absolute;
-            left: 20px;
-            top: 50%;
-            transform: translateY(-50%);
-            font-size: 20px;
-            color: #5f6368;
-        }
-
-        .filters-label {
-            font-size: 13px;
-            color: #5f6368;
-            font-weight: 500;
-            margin-bottom: 12px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .filters {
-            display: flex;
-            gap: 10px;
-            flex-wrap: wrap;
-        }
-
-        .filter-chip {
-            background: #f1f3f4;
-            border: none;
-            border-radius: 20px;
-            padding: 10px 20px;
-            font-size: 14px;
-            font-weight: 500;
-            color: #3c4043;
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-
-        .filter-chip:hover {
-            background: #e8eaed;
-        }
-
-        .filter-chip.active {
-            background: #1a73e8;
-            color: white;
-            box-shadow: 0 1px 3px 0 rgba(26, 115, 232, 0.4);
-        }
-
-        /* Prompts Grid */
-        .prompts-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
-            gap: 24px;
-        }
-
-        .prompt-card {
-            background: white;
-            border-radius: 12px;
-            padding: 24px;
-            border: 1px solid #dadce0;
-            transition: all 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
-            cursor: pointer;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .prompt-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: linear-gradient(90deg, #1a73e8, #34a853, #fbbc04);
-            opacity: 0;
-            transition: opacity 0.3s;
-        }
-
-        .prompt-card:hover::before {
-            opacity: 1;
-        }
-
-        .prompt-card:hover {
-            box-shadow: 0 2px 6px 0 rgba(60,64,67,.3), 0 8px 16px 4px rgba(60,64,67,.15);
+        .card-hover:hover {
             transform: translateY(-4px);
-            border-color: transparent;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
         }
 
-        .prompt-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 16px;
-        }
-
-        .prompt-title-group {
-            flex: 1;
-            min-width: 0;
-        }
-
-        .prompt-title {
-            font-family: 'Google Sans', sans-serif;
-            font-size: 18px;
-            font-weight: 500;
-            color: #202124;
-            margin-bottom: 6px;
-            line-height: 1.3;
-        }
-
-        .prompt-title-en {
-            font-size: 13px;
-            color: #80868b;
-            font-weight: 400;
-            line-height: 1.4;
-        }
-
-        .favorite-btn {
-            background: none;
-            border: none;
-            cursor: pointer;
-            font-size: 20px;
-            color: #dadce0;
-            padding: 4px;
-            transition: all 0.2s;
-            flex-shrink: 0;
-            margin-left: 12px;
-        }
-
-        .favorite-btn:hover {
-            color: #fbbc04;
-            transform: scale(1.2);
-        }
-
-        .favorite-btn.active {
-            color: #fbbc04;
-        }
-
-        .prompt-description {
-            font-size: 14px;
-            color: #5f6368;
-            margin-bottom: 16px;
-            line-height: 1.6;
-            display: -webkit-box;
-            -webkit-line-clamp: 3;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-        }
-
-        .prompt-footer {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .prompt-tags {
-            display: flex;
-            gap: 8px;
-            flex-wrap: wrap;
-            flex: 1;
-        }
-
-        .tag {
-            font-size: 11px;
-            padding: 5px 12px;
-            background: #e8f0fe;
-            color: #1967d2;
-            border-radius: 12px;
-            font-weight: 500;
-            letter-spacing: 0.3px;
-        }
-
-        .prompt-category {
-            display: inline-flex;
-            align-items: center;
-            font-size: 12px;
-            padding: 6px 14px;
-            background: #f1f3f4;
-            color: #5f6368;
-            border-radius: 16px;
-            font-weight: 500;
-            white-space: nowrap;
-        }
-
-        /* Modal */
-        .modal {
+        .scrollbar-hide::-webkit-scrollbar {
             display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.6);
-            z-index: 1000;
-            overflow-y: auto;
-            animation: fadeIn 0.2s;
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        .modal.active {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 40px 20px;
-        }
-
-        .modal-content {
-            background: white;
-            border-radius: 12px;
-            max-width: 900px;
-            width: 100%;
-            max-height: 90vh;
-            overflow-y: auto;
-            box-shadow: 0 24px 38px 3px rgba(0,0,0,.14), 0 9px 46px 8px rgba(0,0,0,.12), 0 11px 15px -7px rgba(0,0,0,.2);
-            animation: slideUp 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
-        }
-
-        @keyframes slideUp {
-            from {
-                opacity: 0;
-                transform: translateY(40px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .modal-header {
-            padding: 32px 32px 24px;
-            border-bottom: 1px solid #e8eaed;
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-        }
-
-        .modal-title-group h2 {
-            font-family: 'Google Sans', sans-serif;
-            font-size: 28px;
-            font-weight: 400;
-            color: #202124;
-            margin-bottom: 8px;
-            line-height: 1.3;
-        }
-
-        .modal-title-en {
-            font-size: 14px;
-            color: #5f6368;
-            line-height: 1.5;
-        }
-
-        .close-btn {
-            background: none;
-            border: none;
-            font-size: 24px;
-            color: #5f6368;
-            cursor: pointer;
-            padding: 8px;
-            width: 40px;
-            height: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-            transition: all 0.2s;
-            flex-shrink: 0;
-            margin-left: 16px;
-        }
-
-        .close-btn:hover {
-            background: #f1f3f4;
-        }
-
-        .modal-body {
-            padding: 32px;
-        }
-
-        .modal-description {
-            font-size: 15px;
-            color: #5f6368;
-            margin-bottom: 28px;
-            line-height: 1.7;
-        }
-
-        .lang-tabs {
-            display: flex;
-            gap: 0;
-            margin-bottom: 20px;
-            border-bottom: 2px solid #e8eaed;
-        }
-
-        .lang-tab {
-            background: none;
-            border: none;
-            padding: 12px 24px;
-            font-size: 15px;
-            font-weight: 500;
-            color: #5f6368;
-            cursor: pointer;
-            border-bottom: 3px solid transparent;
-            margin-bottom: -2px;
-            transition: all 0.2s;
-        }
-
-        .lang-tab:hover {
-            color: #1a73e8;
-            background: #f8f9fa;
-        }
-
-        .lang-tab.active {
-            color: #1a73e8;
-            border-bottom-color: #1a73e8;
-        }
-
-        .prompt-content {
-            background: #f8f9fa;
-            border-radius: 8px;
-            padding: 24px;
-            margin-bottom: 24px;
-            font-size: 14px;
-            line-height: 1.8;
-            white-space: pre-wrap;
-            max-height: 500px;
-            overflow-y: auto;
-            font-family: 'Roboto Mono', monospace;
-            border: 1px solid #e8eaed;
-        }
-
-        .modal-actions {
-            display: flex;
-            gap: 12px;
-            align-items: center;
-        }
-
-        .copy-btn {
-            background: #1a73e8;
-            color: white;
-            border: none;
-            border-radius: 6px;
-            padding: 12px 28px;
-            font-size: 15px;
-            font-weight: 500;
-            cursor: pointer;
-            transition: all 0.2s;
-            box-shadow: 0 1px 2px 0 rgba(60,64,67,.3), 0 1px 3px 1px rgba(60,64,67,.15);
-        }
-
-        .copy-btn:hover {
-            background: #1765cc;
-            box-shadow: 0 1px 3px 0 rgba(60,64,67,.3), 0 4px 8px 3px rgba(60,64,67,.15);
-        }
-
-        .copy-feedback {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            color: #1e8e3e;
-            font-size: 14px;
-            font-weight: 500;
-        }
-
-        /* Empty State */
-        .empty-state {
-            text-align: center;
-            padding: 80px 20px;
-            color: #5f6368;
-        }
-
-        .empty-state-icon {
-            font-size: 72px;
-            margin-bottom: 20px;
-            opacity: 0.4;
-        }
-
-        .empty-state-text {
-            font-size: 16px;
-            font-weight: 500;
-        }
-
-        /* Scrollbar */
-        ::-webkit-scrollbar {
-            width: 12px;
-            height: 12px;
-        }
-
-        ::-webkit-scrollbar-track {
-            background: #f1f3f4;
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background: #dadce0;
-            border-radius: 6px;
-        }
-
-        ::-webkit-scrollbar-thumb:hover {
-            background: #bdc1c6;
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .prompts-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .stats {
-                grid-template-columns: 1fr;
-            }
-
-            .page-title h1 {
-                font-size: 28px;
-            }
-
-            .modal-content {
-                margin: 20px;
-            }
+        .scrollbar-hide {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
         }
     </style>
 </head>
-<body>
+<body class="bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 min-h-screen">
     <!-- Header -->
-    <header class="header">
-        <div class="header-content">
-            <div class="logo-container">
-                <div class="logo-icon">📋</div>
-                <div class="logo">PM Prompts Hub</div>
+    <header class="sticky top-0 z-50 glass-effect border-b border-white/20 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <!-- Logo -->
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 gradient-primary rounded-xl flex items-center justify-center shadow-lg">
+                        <span class="text-white text-xl">✨</span>
+                    </div>
+                    <div>
+                        <h1 class="text-xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
+                            PM Prompts Hub
+                        </h1>
+                        <p class="text-xs text-slate-500">产品经理AI工具箱</p>
+                    </div>
+                </div>
+
+                <!-- Language Toggle -->
+                <button
+                    id="globalLangToggle"
+                    class="px-4 py-2 rounded-lg bg-white hover:bg-slate-50 text-slate-700 font-medium text-sm shadow-sm border border-slate-200 transition-all duration-200 hover:shadow-md"
+                >
+                    <span id="langToggleText">English</span>
+                </button>
             </div>
-            <button class="lang-toggle" id="globalLangToggle">
-                <span id="langToggleText">English</span>
-            </button>
         </div>
     </header>
 
     <!-- Main Content -->
-    <main class="container">
-        <!-- Page Title -->
-        <div class="page-title">
-            <h1>产品经理提示词工具箱</h1>
-            <p class="page-subtitle">基于 Dean Peters 的专业产品管理提示词库，帮助产品经理高效使用 AI 工具</p>
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <!-- Hero Section -->
+        <div class="mb-8 animate-fade-in">
+            <div class="gradient-card rounded-2xl p-8 border border-white/50 shadow-xl">
+                <h2 class="text-3xl font-bold text-slate-800 mb-3">
+                    专业产品管理提示词库
+                </h2>
+                <p class="text-slate-600 text-lg mb-6">
+                    基于 Dean Peters 的开源提示词集合，助力产品经理高效使用 AI 工具完成日常工作
+                </p>
+
+                <!-- Stats Cards -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <!-- Stat 1 -->
+                    <div class="bg-white/80 backdrop-blur rounded-xl p-4 border border-white/50 card-hover">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
+                                <span class="text-2xl">📝</span>
+                            </div>
+                            <div>
+                                <p class="text-3xl font-bold text-slate-800" id="totalPrompts">23</p>
+                                <p class="text-sm text-slate-600 font-medium">提示词模板</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Stat 2 -->
+                    <div class="bg-white/80 backdrop-blur rounded-xl p-4 border border-white/50 card-hover">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center">
+                                <span class="text-2xl">📂</span>
+                            </div>
+                            <div>
+                                <p class="text-3xl font-bold text-slate-800" id="categoryCount">6</p>
+                                <p class="text-sm text-slate-600 font-medium">分类</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Stat 3 -->
+                    <div class="bg-white/80 backdrop-blur rounded-xl p-4 border border-white/50 card-hover">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-12 h-12 bg-amber-100 rounded-lg flex items-center justify-center">
+                                <span class="text-2xl">⭐</span>
+                            </div>
+                            <div>
+                                <p class="text-3xl font-bold text-slate-800" id="favoriteCount">0</p>
+                                <p class="text-sm text-slate-600 font-medium">收藏</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
 
-        <!-- Stats -->
-        <section class="stats">
-            <div class="stat-card">
-                <div class="stat-icon primary">📝</div>
-                <div class="stat-value" id="totalPrompts">23</div>
-                <div class="stat-label">提示词模板</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-icon success">📂</div>
-                <div class="stat-value" id="categoryCount">6</div>
-                <div class="stat-label">分类</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-icon warning">⭐</div>
-                <div class="stat-value" id="favoriteCount">0</div>
-                <div class="stat-label">收藏</div>
-            </div>
-        </section>
-
-        <!-- Search and Filters -->
-        <section class="controls">
-            <div class="search-box">
-                <span class="search-icon">🔍</span>
+        <!-- Search & Filter Section -->
+        <div class="mb-6 bg-white/60 backdrop-blur rounded-2xl p-6 border border-white/50 shadow-lg animate-slide-up">
+            <!-- Search Bar -->
+            <div class="relative mb-4">
+                <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                    <svg class="h-5 w-5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                    </svg>
+                </div>
                 <input
                     type="text"
                     id="searchInput"
-                    placeholder="搜索提示词..."
+                    placeholder="搜索提示词、标签或描述..."
+                    class="w-full pl-12 pr-4 py-3 rounded-xl border-2 border-slate-200 focus:border-indigo-500 focus:ring-4 focus:ring-indigo-100 outline-none transition-all duration-200 bg-white text-slate-800 placeholder-slate-400"
                 >
             </div>
-            <div class="filters-label">分类筛选</div>
-            <div class="filters" id="categoryFilters">
-                <button class="filter-chip active" data-category="all">全部</button>
+
+            <!-- Category Filters -->
+            <div>
+                <p class="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-3">分类筛选</p>
+                <div class="flex flex-wrap gap-2" id="categoryFilters">
+                    <button class="filter-chip px-4 py-2 rounded-lg bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-medium text-sm shadow-md hover:shadow-lg transition-all duration-200" data-category="all">
+                        全部
+                    </button>
+                </div>
             </div>
-        </section>
+        </div>
 
         <!-- Prompts Grid -->
-        <section class="prompts-grid" id="promptsGrid">
-            <!-- Dynamically loaded -->
-        </section>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 animate-scale-in" id="promptsGrid">
+            <!-- Cards will be inserted here -->
+        </div>
     </main>
 
     <!-- Modal -->
-    <div class="modal" id="promptModal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <div class="modal-title-group">
-                    <h2 id="modalTitle"></h2>
-                    <div class="modal-title-en" id="modalTitleEn"></div>
+    <div id="promptModal" class="hidden fixed inset-0 z-50 overflow-y-auto bg-black/50 backdrop-blur-sm animate-fade-in">
+        <div class="flex min-h-screen items-center justify-center p-4">
+            <div class="bg-white rounded-2xl shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-hidden animate-scale-in">
+                <!-- Modal Header -->
+                <div class="gradient-primary p-6 text-white">
+                    <div class="flex items-start justify-between">
+                        <div class="flex-1">
+                            <h3 class="text-2xl font-bold mb-2" id="modalTitle"></h3>
+                            <p class="text-indigo-100 text-sm" id="modalTitleEn"></p>
+                        </div>
+                        <button
+                            onclick="closeModal()"
+                            class="ml-4 w-8 h-8 rounded-lg bg-white/20 hover:bg-white/30 flex items-center justify-center transition-colors"
+                        >
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                            </svg>
+                        </button>
+                    </div>
                 </div>
-                <button class="close-btn" onclick="closeModal()">×</button>
-            </div>
-            <div class="modal-body">
-                <div class="modal-description" id="modalDescription"></div>
 
-                <div class="lang-tabs">
-                    <button class="lang-tab active" data-lang="zh" onclick="switchContentLang('zh')">中文提示词</button>
-                    <button class="lang-tab" data-lang="en" onclick="switchContentLang('en')">English Prompt</button>
-                </div>
+                <!-- Modal Body -->
+                <div class="p-6 overflow-y-auto max-h-[calc(90vh-200px)] scrollbar-hide">
+                    <p class="text-slate-600 mb-6 leading-relaxed" id="modalDescription"></p>
 
-                <div class="prompt-content" id="modalContent"></div>
+                    <!-- Language Tabs -->
+                    <div class="flex space-x-2 mb-4 border-b border-slate-200">
+                        <button
+                            class="lang-tab px-4 py-2 font-medium text-sm transition-all border-b-2 border-indigo-600 text-indigo-600"
+                            data-lang="zh"
+                            onclick="switchContentLang('zh')"
+                        >
+                            中文提示词
+                        </button>
+                        <button
+                            class="lang-tab px-4 py-2 font-medium text-sm transition-all border-b-2 border-transparent text-slate-500 hover:text-slate-700"
+                            data-lang="en"
+                            onclick="switchContentLang('en')"
+                        >
+                            English Prompt
+                        </button>
+                    </div>
 
-                <div class="modal-actions">
-                    <button class="copy-btn" onclick="copyContent()">复制提示词</button>
-                    <span class="copy-feedback" id="copyFeedback"></span>
+                    <!-- Content -->
+                    <div class="bg-slate-50 rounded-xl p-6 mb-6 border border-slate-200 overflow-x-auto">
+                        <pre class="text-sm text-slate-700 leading-relaxed whitespace-pre-wrap font-mono" id="modalContent"></pre>
+                    </div>
+
+                    <!-- Actions -->
+                    <div class="flex items-center space-x-4">
+                        <button
+                            onclick="copyContent()"
+                            class="px-6 py-3 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-200"
+                        >
+                            📋 复制提示词
+                        </button>
+                        <span id="copyFeedback" class="text-green-600 font-medium text-sm"></span>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
     <script src="prompts-data.js?v=2"></script>
-    <script src="app.js?v=2"></script>
+    <script src="app.js?v=3"></script>
 </body>
 </html>
