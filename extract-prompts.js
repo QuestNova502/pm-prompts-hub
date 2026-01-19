@@ -3,6 +3,7 @@
 /**
  * Extract and convert Product Manager Prompts from markdown files
  * Source: ~/.claude/skills/product-manager-prompts/prompts/
+ * Supports bilingual (Chinese/English) output
  */
 
 const fs = require('fs');
@@ -10,6 +11,15 @@ const path = require('path');
 
 const SOURCE_DIR = path.join(process.env.HOME, '.claude/skills/product-manager-prompts/prompts');
 const OUTPUT_FILE = './prompts-data.js';
+const TRANSLATIONS_FILE = './translations.json';
+
+// Load translations
+let translations = {};
+try {
+    translations = JSON.parse(fs.readFileSync(TRANSLATIONS_FILE, 'utf-8'));
+} catch (error) {
+    console.warn('⚠️  Warning: translations.json not found, proceeding without translations');
+}
 
 // Category mapping based on file names
 const categoryMap = {
@@ -36,6 +46,16 @@ const categoryMap = {
     'press-release': 'storytelling',
 
     // Default to other
+};
+
+// Category names in Chinese
+const categoryNames = {
+    'agile': { en: 'Agile', zh: '敏捷开发' },
+    'research': { en: 'Research', zh: '用户研究' },
+    'strategy': { en: 'Strategy', zh: '产品策略' },
+    'analysis': { en: 'Analysis', zh: '市场分析' },
+    'storytelling': { en: 'Storytelling', zh: '产品故事' },
+    'other': { en: 'Other', zh: '其他工具' }
 };
 
 function categorizePrompt(filename) {
@@ -104,6 +124,14 @@ function generateTags(filename, content) {
     return tags.length > 0 ? tags.slice(0, 4) : ['产品管理', 'PM Tools'];
 }
 
+function getTranslation(id, title, description) {
+    const trans = translations[id] || {};
+    return {
+        title_zh: trans.title_zh || title,
+        description_zh: trans.description_zh || description
+    };
+}
+
 function processPrompts() {
     const files = fs.readdirSync(SOURCE_DIR)
         .filter(f => f.endsWith('.md') && f !== 'README.md' && !f.includes('howto'));
@@ -119,12 +147,16 @@ function processPrompts() {
         const category = categorizePrompt(file);
         const description = extractDescription(content);
         const tags = generateTags(file, content);
+        const trans = getTranslation(id, title, description);
 
         prompts.push({
             id,
-            title,
+            title_en: title,
+            title_zh: trans.title_zh,
             category,
-            description,
+            category_name: categoryNames[category] || categoryNames['other'],
+            description_en: description,
+            description_zh: trans.description_zh,
             usage: '参考模板说明，根据您的产品场景调整使用。',
             tags,
             content: content.trim()
@@ -138,8 +170,11 @@ function generateOutput(prompts) {
     const output = `// PM Prompts Data - Extracted from Dean Peters' Product Manager Prompts
 // Source: https://github.com/deanpeters/product-manager-prompts
 // Total prompts: ${prompts.length}
+// Bilingual support: English / 中文
 
 window.PROMPTS_DATA = ${JSON.stringify(prompts, null, 4)};
+
+window.CATEGORY_NAMES = ${JSON.stringify(categoryNames, null, 4)};
 `;
 
     fs.writeFileSync(OUTPUT_FILE, output, 'utf-8');

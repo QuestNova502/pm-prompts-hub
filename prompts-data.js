@@ -1,13 +1,20 @@
 // PM Prompts Data - Extracted from Dean Peters' Product Manager Prompts
 // Source: https://github.com/deanpeters/product-manager-prompts
 // Total prompts: 23
+// Bilingual support: English / 中文
 
 window.PROMPTS_DATA = [
     {
         "id": "dangerous-animals-of-product-management-beast-generator",
-        "title": "Dangerous Animals Of Product Management Beast Generator",
+        "title_en": "Dangerous Animals Of Product Management Beast Generator",
+        "title_zh": "产品管理危险动物生成器",
         "category": "other",
-        "description": "Hello, Chatbot AI Assistant (that's you, ChatGPT, Claude, Gemini, Perplexity, etc.). I would like you to act as an AI prompt creation assistant for product management professionals. Your job is to hel",
+        "category_name": {
+            "en": "Other",
+            "zh": "其他工具"
+        },
+        "description_en": "Hello, Chatbot AI Assistant (that's you, ChatGPT, Claude, Gemini, Perplexity, etc.). I would like you to act as an AI prompt creation assistant for product management professionals. Your job is to hel",
+        "description_zh": "通过创意动物角色比喻，帮助产品专业人士探索产品管理挑战与机遇的AI提示词生成工具。",
         "usage": "参考模板说明，根据您的产品场景调整使用。",
         "tags": [
             "JTBD",
@@ -19,9 +26,15 @@ window.PROMPTS_DATA = [
     },
     {
         "id": "nightmares-of-product-management-movie-title-generator-prompt",
-        "title": "Nightmares Of Product Management Movie Title Generator Prompt",
+        "title_en": "Nightmares Of Product Management Movie Title Generator Prompt",
+        "title_zh": "产品管理噩梦电影标题生成器",
         "category": "other",
-        "description": "AI Assistant (that's you ChatGPT, Claude, Copilot, or Gemini), I want to ask me a series of questions one at a time to help generate \"Product Management Nightmares\" in the style of 1950s and 60s B-hor",
+        "category_name": {
+            "en": "Other",
+            "zh": "其他工具"
+        },
+        "description_en": "AI Assistant (that's you ChatGPT, Claude, Copilot, or Gemini), I want to ask me a series of questions one at a time to help generate \"Product Management Nightmares\" in the style of 1950s and 60s B-hor",
+        "description_zh": "用电影标题的方式，将产品管理中的挑战和痛点转化为生动有趣的表达。",
         "usage": "参考模板说明，根据您的产品场景调整使用。",
         "tags": [
             "产品管理",
@@ -31,9 +44,15 @@ window.PROMPTS_DATA = [
     },
     {
         "id": "a-generative-ai-prompt-builder-for-product-professionals",
-        "title": "A Generative AI Prompt Builder For Product Professionals",
+        "title_en": "A Generative AI Prompt Builder For Product Professionals",
+        "title_zh": "产品专业人士AI提示词构建器",
         "category": "other",
-        "description": "Hello, Chatbot AI Assistant (that's you, ChatGPT, Claude, Gemini, Perlexity, etc.); I would like you to act as an AI prompt creation assistant for product management and marketing professionals. You a",
+        "category_name": {
+            "en": "Other",
+            "zh": "其他工具"
+        },
+        "description_en": "Hello, Chatbot AI Assistant (that's you, ChatGPT, Claude, Gemini, Perlexity, etc.); I would like you to act as an AI prompt creation assistant for product management and marketing professionals. You a",
+        "description_zh": "帮助产品经理和产品团队成员创建高效的生成式AI提示词的指导工具。",
         "usage": "参考模板说明，根据您的产品场景调整使用。",
         "tags": [
             "产品管理",
@@ -43,9 +62,15 @@ window.PROMPTS_DATA = [
     },
     {
         "id": "backlog-epic-hypothesis",
-        "title": "Backlog Epic Hypothesis",
+        "title_en": "Backlog Epic Hypothesis",
+        "title_zh": "产品待办Epic假设模板",
         "category": "agile",
-        "description": "This template is crafted to facilitate the creation of epics for a product backlog, inspired partly by Tim Herbig's hypothesis framework. It provides a structured approach to articulate assumptions ab",
+        "category_name": {
+            "en": "Agile",
+            "zh": "敏捷开发"
+        },
+        "description_en": "This template is crafted to facilitate the creation of epics for a product backlog, inspired partly by Tim Herbig's hypothesis framework. It provides a structured approach to articulate assumptions ab",
+        "description_zh": "使用假设驱动的方法，构建可验证的产品待办事项和Epic，确保每个功能都有明确的价值假设。",
         "usage": "参考模板说明，根据您的产品场景调整使用。",
         "tags": [
             "JTBD",
@@ -57,9 +82,15 @@ window.PROMPTS_DATA = [
     },
     {
         "id": "company-profile-executive-insights-research",
-        "title": "Company Profile Executive Insights Research",
+        "title_en": "Company Profile Executive Insights Research",
+        "title_zh": "公司概况与高管洞察研究",
         "category": "other",
-        "description": "* **Name:** [Insert the official name of the company]",
+        "category_name": {
+            "en": "Other",
+            "zh": "其他工具"
+        },
+        "description_en": "* **Name:** [Insert the official name of the company]",
+        "description_zh": "系统性分析目标公司的业务模式、战略方向和高管观点，支持商业决策和竞品分析。",
         "usage": "参考模板说明，根据您的产品场景调整使用。",
         "tags": [
             "产品定位",
@@ -71,9 +102,15 @@ window.PROMPTS_DATA = [
     },
     {
         "id": "customer-journey-mapping-prompt-template",
-        "title": "Customer Journey Mapping Prompt Template",
+        "title_en": "Customer Journey Mapping Prompt Template",
+        "title_zh": "客户旅程地图模板",
         "category": "research",
-        "description": "This prompt is designed to guide product managers in creating a comprehensive customer journey map for their brand. By following the step-by-step instructions and using the provided sample table, prod",
+        "category_name": {
+            "en": "Research",
+            "zh": "用户研究"
+        },
+        "description_en": "This prompt is designed to guide product managers in creating a comprehensive customer journey map for their brand. By following the step-by-step instructions and using the provided sample table, prod",
+        "description_zh": "可视化用户完整体验流程，识别关键触点、痛点和机会点，优化产品体验。",
         "usage": "参考模板说明，根据您的产品场景调整使用。",
         "tags": [
             "用户画像",
@@ -83,9 +120,15 @@ window.PROMPTS_DATA = [
     },
     {
         "id": "eol-for-a-product-message",
-        "title": "Eol For A Product Message",
+        "title_en": "Eol For A Product Message",
+        "title_zh": "产品生命周期终止公告",
         "category": "other",
-        "description": "This template provides a structured approach for crafting an End of Life (EOL) message for a product or service, ensuring clear communication about the transition. The EOL message is crucial for infor",
+        "category_name": {
+            "en": "Other",
+            "zh": "其他工具"
+        },
+        "description_en": "This template provides a structured approach for crafting an End of Life (EOL) message for a product or service, ensuring clear communication about the transition. The EOL message is crucial for infor",
+        "description_zh": "专业撰写产品EOL（End of Life）公告，妥善管理用户期望和过渡计划。",
         "usage": "参考模板说明，根据您的产品场景调整使用。",
         "tags": [
             "产品管理",
@@ -95,9 +138,15 @@ window.PROMPTS_DATA = [
     },
     {
         "id": "framing-the-problem-statement",
-        "title": "Framing The Problem Statement",
+        "title_en": "Framing The Problem Statement",
+        "title_zh": "问题陈述框架",
         "category": "other",
-        "description": "This template is designed to guide product managers in socializing & articulating a problem statement that effectively communicates the core issues to be addressed.",
+        "category_name": {
+            "en": "Other",
+            "zh": "其他工具"
+        },
+        "description_en": "This template is designed to guide product managers in socializing & articulating a problem statement that effectively communicates the core issues to be addressed.",
+        "description_zh": "清晰定义和表述产品问题，确保团队对要解决的核心问题达成共识。",
         "usage": "参考模板说明，根据您的产品场景调整使用。",
         "tags": [
             "JTBD",
@@ -109,9 +158,15 @@ window.PROMPTS_DATA = [
     },
     {
         "id": "futuristic-product-faq",
-        "title": "Futuristic Product Faq",
+        "title_en": "Futuristic Product Faq",
+        "title_zh": "未来产品FAQ生成器",
         "category": "other",
-        "description": "This template, inspired by the Amazon Working Backwards process, guides product managers in creating a futuristic FAQ for their product or service. The template provides a structure and prompts for th",
+        "category_name": {
+            "en": "Other",
+            "zh": "其他工具"
+        },
+        "description_en": "This template, inspired by the Amazon Working Backwards process, guides product managers in creating a futuristic FAQ for their product or service. The template provides a structure and prompts for th",
+        "description_zh": "预测并回答用户可能提出的问题，提前准备产品发布和沟通材料。",
         "usage": "参考模板说明，根据您的产品场景调整使用。",
         "tags": [
             "用户画像",
@@ -123,9 +178,15 @@ window.PROMPTS_DATA = [
     },
     {
         "id": "jobs-to-be-done",
-        "title": "Jobs To Be Done",
+        "title_en": "Jobs To Be Done",
+        "title_zh": "用户任务理论（JTBD）",
         "category": "research",
-        "description": "This Jobs-to-be-Done template, influenced by the Customer Circle segment of the Osterwalder Value Proposition Canvas, has been created for interactive use with Generative AI agents such as ChatGPT, Ge",
+        "category_name": {
+            "en": "Research",
+            "zh": "用户研究"
+        },
+        "description_en": "This Jobs-to-be-Done template, influenced by the Customer Circle segment of the Osterwalder Value Proposition Canvas, has been created for interactive use with Generative AI agents such as ChatGPT, Ge",
+        "description_zh": "从用户要完成的任务出发，深入理解用户真正的需求动机，而非仅关注人口统计特征。",
         "usage": "参考模板说明，根据您的产品场景调整使用。",
         "tags": [
             "JTBD",
@@ -135,9 +196,15 @@ window.PROMPTS_DATA = [
     },
     {
         "id": "pestel-analysis-prompt-template",
-        "title": "Pestel Analysis Prompt Template",
+        "title_en": "Pestel Analysis Prompt Template",
+        "title_zh": "PESTEL宏观环境分析",
         "category": "other",
-        "description": "This template facilitates conducting a PESTEL (Political, Economic, Social, Technological, Environmental, and Legal) analysis for projects or products. It's designed for use with generative AI tools t",
+        "category_name": {
+            "en": "Other",
+            "zh": "其他工具"
+        },
+        "description_en": "This template facilitates conducting a PESTEL (Political, Economic, Social, Technological, Environmental, and Legal) analysis for projects or products. It's designed for use with generative AI tools t",
+        "description_zh": "从政治、经济、社会、技术、环境、法律六个维度，系统分析影响产品的宏观环境因素。",
         "usage": "参考模板说明，根据您的产品场景调整使用。",
         "tags": [
             "产品定位",
@@ -147,9 +214,15 @@ window.PROMPTS_DATA = [
     },
     {
         "id": "positioning-statement",
-        "title": "Positioning Statement",
+        "title_en": "Positioning Statement",
+        "title_zh": "产品定位声明",
         "category": "strategy",
-        "description": "This template provides a structured approach for crafting a positioning statement for a product or service, following the framework suggested by Geoffrey Moore in \"Crossing the Chasm.\" The positioning",
+        "category_name": {
+            "en": "Strategy",
+            "zh": "产品策略"
+        },
+        "description_en": "This template provides a structured approach for crafting a positioning statement for a product or service, following the framework suggested by Geoffrey Moore in \"Crossing the Chasm.\" The positioning",
+        "description_zh": "明确产品的目标用户、核心价值主张和竞争差异化，建立清晰的市场定位。",
         "usage": "参考模板说明，根据您的产品场景调整使用。",
         "tags": [
             "JTBD",
@@ -161,9 +234,15 @@ window.PROMPTS_DATA = [
     },
     {
         "id": "proto-persona-profile",
-        "title": "Proto Persona Profile",
+        "title_en": "Proto Persona Profile",
+        "title_zh": "原型用户画像",
         "category": "research",
-        "description": "This prompt is designed to help product managers and design teams create an initial proto-persona profile that can be used to shape and validate a more comprehensive persona later in the product devel",
+        "category_name": {
+            "en": "Research",
+            "zh": "用户研究"
+        },
+        "description_en": "This prompt is designed to help product managers and design teams create an initial proto-persona profile that can be used to shape and validate a more comprehensive persona later in the product devel",
+        "description_zh": "基于假设快速创建初步用户画像，在产品早期阶段指导决策，后续通过研究验证。",
         "usage": "参考模板说明，根据您的产品场景调整使用。",
         "tags": [
             "用户画像",
@@ -173,9 +252,15 @@ window.PROMPTS_DATA = [
     },
     {
         "id": "recommendation-canvas-template",
-        "title": "Recommendation Canvas Template",
+        "title_en": "Recommendation Canvas Template",
+        "title_zh": "推荐决策画布",
         "category": "other",
-        "description": "The Recommendation Canvas is a strategic tool designed to guide product managers in evaluating and proposing AI solutions for specific customer problems and personas. This template provides a structur",
+        "category_name": {
+            "en": "Other",
+            "zh": "其他工具"
+        },
+        "description_en": "The Recommendation Canvas is a strategic tool designed to guide product managers in evaluating and proposing AI solutions for specific customer problems and personas. This template provides a structur",
+        "description_zh": "结构化呈现产品决策建议，包括背景、分析、方案对比和推荐理由。",
         "usage": "参考模板说明，根据您的产品场景调整使用。",
         "tags": [
             "用户画像",
@@ -187,9 +272,15 @@ window.PROMPTS_DATA = [
     },
     {
         "id": "reverse-engineer-ieee830srs-to-prd-prompt-template",
-        "title": "Reverse Engineer IEEE830srs To PRD Prompt Template",
+        "title_en": "Reverse Engineer IEEE830srs To PRD Prompt Template",
+        "title_zh": "IEEE830 SRS转PRD模板",
         "category": "strategy",
-        "description": "This template facilitates the creation of a generative AI Product Requirements Document (PRD) fill-in-the-banks prompt, reverse-engineered from the IEEE Std.830-1998 Software Requirements Specificatio",
+        "category_name": {
+            "en": "Strategy",
+            "zh": "产品策略"
+        },
+        "description_en": "This template facilitates the creation of a generative AI Product Requirements Document (PRD) fill-in-the-banks prompt, reverse-engineered from the IEEE Std.830-1998 Software Requirements Specificatio",
+        "description_zh": "将技术导向的软件需求规格说明（SRS）转换为以产品为中心的需求文档（PRD）。",
         "usage": "参考模板说明，根据您的产品场景调整使用。",
         "tags": [
             "PRD",
@@ -199,9 +290,15 @@ window.PROMPTS_DATA = [
     },
     {
         "id": "reverse-engineer-iso29148-to-prd-prompt-template",
-        "title": "Reverse Engineer ISO29148 To PRD Prompt Template",
+        "title_en": "Reverse Engineer ISO29148 To PRD Prompt Template",
+        "title_zh": "ISO29148转PRD模板",
         "category": "strategy",
-        "description": "This template aids in the creation of a generative AI Product Requirements Document (PRD) fill-in-the-blanks prompt, reverse-engineered from the ISO 29148 StRS and BRS requirements standard. It is des",
+        "category_name": {
+            "en": "Strategy",
+            "zh": "产品策略"
+        },
+        "description_en": "This template aids in the creation of a generative AI Product Requirements Document (PRD) fill-in-the-blanks prompt, reverse-engineered from the ISO 29148 StRS and BRS requirements standard. It is des",
+        "description_zh": "将ISO29148标准的系统需求文档转换为产品需求文档格式。",
         "usage": "参考模板说明，根据您的产品场景调整使用。",
         "tags": [
             "PRD",
@@ -211,9 +308,15 @@ window.PROMPTS_DATA = [
     },
     {
         "id": "storyboard-storytelling-prompt",
-        "title": "Storyboard Storytelling Prompt",
+        "title_en": "Storyboard Storytelling Prompt",
+        "title_zh": "产品故事板叙事",
         "category": "storytelling",
-        "description": "Hello, Chatbot AI Assistant (that's you, ChatGPT, Claude, Gemini, Perplexity, etc.); I would like you to act as an AI assistant for storyboard narratives. You are great at asking clarifying questions ",
+        "category_name": {
+            "en": "Storytelling",
+            "zh": "产品故事"
+        },
+        "description_en": "Hello, Chatbot AI Assistant (that's you, ChatGPT, Claude, Gemini, Perplexity, etc.); I would like you to act as an AI assistant for storyboard narratives. You are great at asking clarifying questions ",
+        "description_zh": "通过故事板的视觉化叙事方式，生动展示产品使用场景和价值。",
         "usage": "参考模板说明，根据您的产品场景调整使用。",
         "tags": [
             "产品管理",
@@ -223,9 +326,15 @@ window.PROMPTS_DATA = [
     },
     {
         "id": "strategic-scrum-team-session-kickoff",
-        "title": "Strategic Scrum Team Session Kickoff",
+        "title_en": "Strategic Scrum Team Session Kickoff",
+        "title_zh": "战略Scrum团队启动会",
         "category": "agile",
-        "description": "This kickoff template sets the foundation for a strategic scrum team session within an AI assistant. It gathers essential context at the beginning of a new session, ensuring that the tone, point-of-vi",
+        "category_name": {
+            "en": "Agile",
+            "zh": "敏捷开发"
+        },
+        "description_en": "This kickoff template sets the foundation for a strategic scrum team session within an AI assistant. It gathers essential context at the beginning of a new session, ensuring that the tone, point-of-vi",
+        "description_zh": "组织高效的Scrum团队启动会议，对齐目标、建立共识、明确工作方式。",
         "usage": "参考模板说明，根据您的产品场景调整使用。",
         "tags": [
             "用户画像",
@@ -237,9 +346,15 @@ window.PROMPTS_DATA = [
     },
     {
         "id": "user-story-mapping",
-        "title": "User Story Mapping",
+        "title_en": "User Story Mapping",
+        "title_zh": "用户故事地图",
         "category": "agile",
-        "description": "Inspired by Jeff Patton's user story mapping approach, this template assists product teams in visualizing the user journey to create a shared understanding and prioritize features effectively. It pres",
+        "category_name": {
+            "en": "Agile",
+            "zh": "敏捷开发"
+        },
+        "description_en": "Inspired by Jeff Patton's user story mapping approach, this template assists product teams in visualizing the user journey to create a shared understanding and prioritize features effectively. It pres",
+        "description_zh": "采用Jeff Patton的故事地图方法，可视化用户旅程，帮助团队优先级排序和发布规划。",
         "usage": "参考模板说明，根据您的产品场景调整使用。",
         "tags": [
             "User Story",
@@ -251,9 +366,15 @@ window.PROMPTS_DATA = [
     },
     {
         "id": "user-story-prompt-template",
-        "title": "User Story Prompt Template",
+        "title_en": "User Story Prompt Template",
+        "title_zh": "用户故事模板",
         "category": "agile",
-        "description": "Inspired by Mike Cohn's user story use case and the Gherkin Acceptance Criteria formats, this template is designed to help product managers and development teams create clear, concise user stories. It",
+        "category_name": {
+            "en": "Agile",
+            "zh": "敏捷开发"
+        },
+        "description_en": "Inspired by Mike Cohn's user story use case and the Gherkin Acceptance Criteria formats, this template is designed to help product managers and development teams create clear, concise user stories. It",
+        "description_zh": "基于Mike Cohn格式和Gherkin验收标准，创建结构化、可测试的用户故事。",
         "usage": "参考模板说明，根据您的产品场景调整使用。",
         "tags": [
             "User Story",
@@ -265,9 +386,15 @@ window.PROMPTS_DATA = [
     },
     {
         "id": "user-story-splitting-prompt-template",
-        "title": "User Story Splitting Prompt Template",
+        "title_en": "User Story Splitting Prompt Template",
+        "title_zh": "用户故事拆分模板",
         "category": "agile",
-        "description": "This prompt template is designed to help product managers, agile teams, and developers split a user story into smaller, more manageable stories using the provided User Story Splitting Case Logic detai",
+        "category_name": {
+            "en": "Agile",
+            "zh": "敏捷开发"
+        },
+        "description_en": "This prompt template is designed to help product managers, agile teams, and developers split a user story into smaller, more manageable stories using the provided User Story Splitting Case Logic detai",
+        "description_zh": "使用故事拆分逻辑，将大颗粒度用户故事拆分为小而可交付的增量。",
         "usage": "参考模板说明，根据您的产品场景调整使用。",
         "tags": [
             "User Story",
@@ -279,9 +406,15 @@ window.PROMPTS_DATA = [
     },
     {
         "id": "user-story_ai-enhanced_prompt-template",
-        "title": "User Story_ai Enhanced_prompt Template",
+        "title_en": "User Story_ai Enhanced_prompt Template",
+        "title_zh": "AI增强用户故事模板",
         "category": "agile",
-        "description": "Generates AI-enhanced, Obstacle-Aware + JTBD-Guided User Stories + Gherkin Acceptance Criteria with Splitting Recommendations",
+        "category_name": {
+            "en": "Agile",
+            "zh": "敏捷开发"
+        },
+        "description_en": "Generates AI-enhanced, Obstacle-Aware + JTBD-Guided User Stories + Gherkin Acceptance Criteria with Splitting Recommendations",
+        "description_zh": "结合障碍感知和JTBD理论，生成更具洞察力的用户故事和验收标准。",
         "usage": "参考模板说明，根据您的产品场景调整使用。",
         "tags": [
             "User Story",
@@ -293,9 +426,15 @@ window.PROMPTS_DATA = [
     },
     {
         "id": "visionary-press-release",
-        "title": "Visionary Press Release",
+        "title_en": "Visionary Press Release",
+        "title_zh": "Visionary Press Release",
         "category": "strategy",
-        "description": "This template, inspired by the Amazon Working Backwards process, guides product managers in creating a visionary press release for their product or service. The template provides a structure and promp",
+        "category_name": {
+            "en": "Strategy",
+            "zh": "产品策略"
+        },
+        "description_en": "This template, inspired by the Amazon Working Backwards process, guides product managers in creating a visionary press release for their product or service. The template provides a structure and promp",
+        "description_zh": "This template, inspired by the Amazon Working Backwards process, guides product managers in creating a visionary press release for their product or service. The template provides a structure and promp",
         "usage": "参考模板说明，根据您的产品场景调整使用。",
         "tags": [
             "用户画像",
@@ -304,3 +443,30 @@ window.PROMPTS_DATA = [
         "content": "# visionary-press-release.md\n<!--\n## Description:\nThis template, inspired by the Amazon Working Backwards process, guides product managers in creating a visionary press release for their product or service. The template provides a structure and prompts for the key information typically included in an effective press release. The product manager can either fill in the product context directly, or the AI assistant can query them for the necessary information before generating the press release.\n\n## Usage Note:\nIf the product context is not provided upfront, the AI assistant will prompt the user for the 7 key items of information before generating the press release. The template is designed to be used in a Generative AI session, such as with ChatGPT, Gemini, Claude, or other AI assistants.\n\n## AI Assistant's Point of View:\nAs the AI Assistant, your role is to think like a strategic product communicator who understands the key elements of an effective press release. Draw upon the Amazon Working Backwards process and best practices in product communication to guide the user in creating a compelling and informative press release that highlights the value and impact of their product or service.\n\n## AI Assistant's Task:\nYour task is to guide the user through the process of creating a visionary press release by either using the provided product context or by asking the user for the necessary information. Use the template to structure the press release and ensure that it includes all the key elements, such as the headline, introduction, key features, quotes, and call to action. Provide suggestions and insights to help the user refine the press release and effectively communicate the value of their product or service.\n\n## Attribution:\nVisionary press release template inspired by the Amazon Working Backwards process, adapted for Generative AI use by Dean Peters, 17Mar24.\n\n## Licensing:\nThis template is licensed under the MIT License, allowing for free use, modification, and distribution with proper attribution to the original creator.\n-->\n\n## Product Context\n<!-- If the product manager has filled in the product context, it will appear below. If not, the AI assistant will prompt the user for this information. -->\n\n1. [Describe the nature of the product/service]\n2. [List the target persona]\n3. [Cite Key features or unique selling points]\n4. [Quote the company's mission, values, or background]\n5. [Enumerate specific goals, challenges, or problems addressed by the product/service]\n6. [Add additional data, information, artifacts, or articles]\n7. [List the target audiences]\n\n## Press Release Template\n\n<!-- Headline: -->\n\"[New Development Product/Service] by [Company/Organization Name] Aims to [Main Purpose/Goal]\"\n\n<!-- Dateline: -->\n\"[City], [State/Province], Country, [Date] —\"\n\n<!-- Introduction Paragraph: -->\n\"Today, [Company/Organization Name], a [Type of Organization], announced [Key News Item], a [Brief Description of News Item]. This [Development/Event/Product] is set to [Main Benefit or Goal], addressing [Key Issue or Need].\"\n\n<!-- Second Paragraph: -->\n\"[Key News Item] will [Describe What It Does or Solves]. [Quote from a Key Person in the Company], '[Insert Quotation Here].' This initiative reflects [Company/Organization's] commitment to [Core Value or Mission].\"\n\n<!-- Additional Paragraph: -->\n\"In addition to [Mentioned Features], [Key News Item] also [Additional Features or Benefits]. According to [Another Source or Statistic], [Relevant Data or Statistic Supporting the News].\"\n\n<!-- Boilerplate: -->\n\"[Company/Organization Name], founded in [Year], is a [Type of Company/Organization] known for [Main Products/Services]. With a focus on [Company Mission or Values], [Company/Organization Name] has [Achievements or Milestones].\"\n\n<!-- Call to Action: -->\n\"For more information about [Key News Item], visit [Website] or contact [Media Contact Name] at [Media Contact Information].\"\n\n**Media Contact Information:**\n\"[Media Contact Name]\nTitle: [Contact's Title]\nPhone: [Contact's Phone Number]\nEmail: [Contact's Email Address]\"\n\n<!-- AI Assistant: If the product context is not provided, ask the user the following questions:\n\n1. Can you describe the nature of the product or service you're announcing?\n2. Who is the target persona for this product or service?\n3. What are the key features or unique selling points of the product or service?\n4. Can you provide a brief overview of your company's mission, values, or background?\n5. What specific goals, challenges, or problems does your product or service address?\n6. Do you have any additional data, information, artifacts, or articles that would be relevant to include in the press release?\n7. Who are the target audiences for this press release?\n\nOnce the user provides the necessary context, use the template to generate a visionary press release that effectively communicates the value and impact of the product or service.\n-->"
     }
 ];
+
+window.CATEGORY_NAMES = {
+    "agile": {
+        "en": "Agile",
+        "zh": "敏捷开发"
+    },
+    "research": {
+        "en": "Research",
+        "zh": "用户研究"
+    },
+    "strategy": {
+        "en": "Strategy",
+        "zh": "产品策略"
+    },
+    "analysis": {
+        "en": "Analysis",
+        "zh": "市场分析"
+    },
+    "storytelling": {
+        "en": "Storytelling",
+        "zh": "产品故事"
+    },
+    "other": {
+        "en": "Other",
+        "zh": "其他工具"
+    }
+};

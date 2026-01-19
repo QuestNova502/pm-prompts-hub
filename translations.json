@@ -1,0 +1,90 @@
+{
+  "dangerous-animals-of-product-management-beast-generator": {
+    "title_zh": "产品管理危险动物生成器",
+    "description_zh": "通过创意动物角色比喻，帮助产品专业人士探索产品管理挑战与机遇的AI提示词生成工具。"
+  },
+  "nightmares-of-product-management-movie-title-generator-prompt": {
+    "title_zh": "产品管理噩梦电影标题生成器",
+    "description_zh": "用电影标题的方式，将产品管理中的挑战和痛点转化为生动有趣的表达。"
+  },
+  "a-generative-ai-prompt-builder-for-product-professionals": {
+    "title_zh": "产品专业人士AI提示词构建器",
+    "description_zh": "帮助产品经理和产品团队成员创建高效的生成式AI提示词的指导工具。"
+  },
+  "backlog-epic-hypothesis": {
+    "title_zh": "产品待办Epic假设模板",
+    "description_zh": "使用假设驱动的方法，构建可验证的产品待办事项和Epic，确保每个功能都有明确的价值假设。"
+  },
+  "company-profile-executive-insights-research": {
+    "title_zh": "公司概况与高管洞察研究",
+    "description_zh": "系统性分析目标公司的业务模式、战略方向和高管观点，支持商业决策和竞品分析。"
+  },
+  "customer-journey-mapping-prompt-template": {
+    "title_zh": "客户旅程地图模板",
+    "description_zh": "可视化用户完整体验流程，识别关键触点、痛点和机会点，优化产品体验。"
+  },
+  "eol-for-a-product-message": {
+    "title_zh": "产品生命周期终止公告",
+    "description_zh": "专业撰写产品EOL（End of Life）公告，妥善管理用户期望和过渡计划。"
+  },
+  "framing-the-problem-statement": {
+    "title_zh": "问题陈述框架",
+    "description_zh": "清晰定义和表述产品问题，确保团队对要解决的核心问题达成共识。"
+  },
+  "futuristic-product-faq": {
+    "title_zh": "未来产品FAQ生成器",
+    "description_zh": "预测并回答用户可能提出的问题，提前准备产品发布和沟通材料。"
+  },
+  "jobs-to-be-done": {
+    "title_zh": "用户任务理论（JTBD）",
+    "description_zh": "从用户要完成的任务出发，深入理解用户真正的需求动机，而非仅关注人口统计特征。"
+  },
+  "pestel-analysis-prompt-template": {
+    "title_zh": "PESTEL宏观环境分析",
+    "description_zh": "从政治、经济、社会、技术、环境、法律六个维度，系统分析影响产品的宏观环境因素。"
+  },
+  "positioning-statement": {
+    "title_zh": "产品定位声明",
+    "description_zh": "明确产品的目标用户、核心价值主张和竞争差异化，建立清晰的市场定位。"
+  },
+  "proto-persona-profile": {
+    "title_zh": "原型用户画像",
+    "description_zh": "基于假设快速创建初步用户画像，在产品早期阶段指导决策，后续通过研究验证。"
+  },
+  "recommendation-canvas-template": {
+    "title_zh": "推荐决策画布",
+    "description_zh": "结构化呈现产品决策建议，包括背景、分析、方案对比和推荐理由。"
+  },
+  "reverse-engineer-ieee830srs-to-prd-prompt-template": {
+    "title_zh": "IEEE830 SRS转PRD模板",
+    "description_zh": "将技术导向的软件需求规格说明（SRS）转换为以产品为中心的需求文档（PRD）。"
+  },
+  "reverse-engineer-iso29148-to-prd-prompt-template": {
+    "title_zh": "ISO29148转PRD模板",
+    "description_zh": "将ISO29148标准的系统需求文档转换为产品需求文档格式。"
+  },
+  "storyboard-storytelling-prompt": {
+    "title_zh": "产品故事板叙事",
+    "description_zh": "通过故事板的视觉化叙事方式，生动展示产品使用场景和价值。"
+  },
+  "strategic-scrum-team-session-kickoff": {
+    "title_zh": "战略Scrum团队启动会",
+    "description_zh": "组织高效的Scrum团队启动会议，对齐目标、建立共识、明确工作方式。"
+  },
+  "user-story-mapping": {
+    "title_zh": "用户故事地图",
+    "description_zh": "采用Jeff Patton的故事地图方法，可视化用户旅程，帮助团队优先级排序和发布规划。"
+  },
+  "user-story-prompt-template": {
+    "title_zh": "用户故事模板",
+    "description_zh": "基于Mike Cohn格式和Gherkin验收标准，创建结构化、可测试的用户故事。"
+  },
+  "user-story-splitting-prompt-template": {
+    "title_zh": "用户故事拆分模板",
+    "description_zh": "使用故事拆分逻辑，将大颗粒度用户故事拆分为小而可交付的增量。"
+  },
+  "user-story_ai-enhanced_prompt-template": {
+    "title_zh": "AI增强用户故事模板",
+    "description_zh": "结合障碍感知和JTBD理论，生成更具洞察力的用户故事和验收标准。"
+  }
+}
