@@ -19,13 +19,13 @@
 
 ### 在线使用
 
-访问: [https://你的用户名.github.io/pm-prompts-hub](https://你的用户名.github.io/pm-prompts-hub)
+访问: [https://questnova502.github.io/pm-prompts-hub](https://questnova502.github.io/pm-prompts-hub)
 
 ### 本地运行
 
 ```bash
 # 克隆仓库
-git clone https://github.com/你的用户名/pm-prompts-hub.git
+git clone https://github.com/QuestNova502/pm-prompts-hub.git
 
 # 打开项目
 cd pm-prompts-hub
@@ -133,7 +133,7 @@ MIT License - 自由使用、修改和分享
 
 ## 📧 联系方式
 
-有问题或建议? [提交 Issue](https://github.com/你的用户名/pm-prompts-hub/issues)
+有问题或建议? [提交 Issue](https://github.com/QuestNova502/pm-prompts-hub/issues)
 
 ---
 
