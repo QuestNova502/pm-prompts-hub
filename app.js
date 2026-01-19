@@ -220,7 +220,14 @@ function updateModalContent() {
     if (!currentPrompt) return;
 
     const contentDiv = document.getElementById('modalContent');
-    contentDiv.textContent = currentPrompt.content;
+
+    // Show Chinese translation if viewing in Chinese tab and translation exists
+    if (currentContentLang === 'zh' && currentPrompt.content_zh) {
+        contentDiv.textContent = currentPrompt.content_zh;
+    } else {
+        // Otherwise show original English content
+        contentDiv.textContent = currentPrompt.content;
+    }
 
     const copyBtn = document.querySelector('.px-6.py-3.bg-gradient-to-r');
     if (copyBtn) {
