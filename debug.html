@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Debug PM Prompts Hub</title>
+    <style>
+        body { font-family: Arial; padding: 20px; }
+        .error { color: red; }
+        .success { color: green; }
+        pre { background: #f5f5f5; padding: 10px; overflow-x: auto; }
+    </style>
+</head>
+<body>
+    <h1>PM Prompts Hub Debug</h1>
+
+    <h2>Step 1: Load prompts-data.js</h2>
+    <div id="step1"></div>
+
+    <h2>Step 2: Check PROMPTS_DATA</h2>
+    <div id="step2"></div>
+
+    <h2>Step 3: Test renderPrompts function</h2>
+    <div id="step3"></div>
+    <div id="promptsGrid" style="border: 2px solid #ccc; min-height: 100px; padding: 10px;"></div>
+
+    <script src="prompts-data.js"></script>
+    <script>
+        // Step 1
+        document.getElementById('step1').innerHTML = '<p class="success">✅ prompts-data.js loaded</p>';
+
+        // Step 2
+        if (window.PROMPTS_DATA) {
+            document.getElementById('step2').innerHTML = `
+                <p class="success">✅ PROMPTS_DATA exists</p>
+                <p>Count: ${window.PROMPTS_DATA.length} prompts</p>
+                <p>First prompt: ${window.PROMPTS_DATA[0].title}</p>
+            `;
+        } else {
+            document.getElementById('step2').innerHTML = '<p class="error">❌ PROMPTS_DATA not found</p>';
+        }
+
+        // Step 3: Copy renderPrompts from app.js
+        function createPromptCard(prompt) {
+            return `
+                <div style="border: 1px solid #ddd; padding: 10px; margin: 10px; background: white;">
+                    <h3>${prompt.title}</h3>
+                    <p>${prompt.description}</p>
+                    <button onclick="alert('Clicked: ${prompt.id}')">Test Click</button>
+                </div>
+            `;
+        }
+
+        function renderPrompts(prompts) {
+            const grid = document.getElementById('promptsGrid');
+            if (prompts.length === 0) {
+                grid.innerHTML = '<p class="error">No prompts to display</p>';
+                return;
+            }
+            grid.innerHTML = prompts.map(p => createPromptCard(p)).join('');
+            document.getElementById('step3').innerHTML = `<p class="success">✅ Rendered ${prompts.length} cards</p>`;
+        }
+
+        // Test render
+        if (window.PROMPTS_DATA && window.PROMPTS_DATA.length > 0) {
+            renderPrompts(window.PROMPTS_DATA.slice(0, 3)); // Show first 3
+        } else {
+            document.getElementById('step3').innerHTML = '<p class="error">❌ Cannot render: no data</p>';
+        }
+    </script>
+</body>
+</html>
