@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PM Prompts Hub - 产品经理提示词工具箱</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .card-hover {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .card-hover:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+            border-radius: 9999px;
+        }
+
+        .copy-feedback {
+            animation: slideUp 0.3s ease-out;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .search-input:focus {
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .category-pill {
+            transition: all 0.2s ease;
+        }
+
+        .category-pill:hover {
+            transform: scale(1.05);
+        }
+
+        .category-pill.active {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .modal-backdrop {
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(4px);
+        }
+
+        .fade-in {
+            animation: fadeIn 0.3s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .star-icon {
+            transition: all 0.2s ease;
+        }
+
+        .star-icon:hover {
+            transform: scale(1.2);
+        }
+
+        .star-icon.favorited {
+            color: #fbbf24;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen">
+
+    <!-- Header -->
+    <header class="gradient-bg text-white shadow-lg">
+        <div class="container mx-auto px-4 py-8">
+            <div class="flex items-center justify-between mb-6">
+                <div>
+                    <h1 class="text-4xl font-bold mb-2">PM Prompts Hub</h1>
+                    <p class="text-purple-100 text-lg">产品经理的 AI 提示词工具箱 ✨</p>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <button id="favoritesBtn" class="bg-white/20 hover:bg-white/30 px-4 py-2 rounded-lg transition flex items-center space-x-2">
+                        <i class="fas fa-heart"></i>
+                        <span id="favCount" class="font-semibold">0</span>
+                    </button>
+                    <a href="https://github.com/deanpeters/product-manager-prompts" target="_blank"
+                       class="bg-white/20 hover:bg-white/30 px-4 py-2 rounded-lg transition flex items-center space-x-2">
+                        <i class="fab fa-github"></i>
+                        <span>GitHub</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Stats -->
+            <div class="grid grid-cols-3 gap-4 mb-6">
+                <div class="bg-white/10 rounded-lg p-4 backdrop-blur-sm">
+                    <div class="text-3xl font-bold" id="totalPrompts">25+</div>
+                    <div class="text-purple-100 text-sm">提示词模板</div>
+                </div>
+                <div class="bg-white/10 rounded-lg p-4 backdrop-blur-sm">
+                    <div class="text-3xl font-bold">6</div>
+                    <div class="text-purple-100 text-sm">应用场景</div>
+                </div>
+                <div class="bg-white/10 rounded-lg p-4 backdrop-blur-sm">
+                    <div class="text-3xl font-bold">MIT</div>
+                    <div class="text-purple-100 text-sm">开源协议</div>
+                </div>
+            </div>
+
+            <!-- Search Bar -->
+            <div class="relative">
+                <input type="text"
+                       id="searchInput"
+                       placeholder="搜索提示词... (例如: user story, JTBD, positioning)"
+                       class="search-input w-full px-6 py-4 rounded-xl text-gray-800 focus:outline-none focus:ring-2 focus:ring-purple-300 transition shadow-lg"
+                />
+                <i class="fas fa-search absolute right-6 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8">
+
+        <!-- Category Filter -->
+        <div class="mb-8">
+            <h2 class="text-xl font-semibold text-gray-800 mb-4">按场景分类</h2>
+            <div class="flex flex-wrap gap-3" id="categoryFilter">
+                <button class="category-pill active px-6 py-2 rounded-full bg-white text-gray-700 shadow hover:shadow-md font-medium" data-category="all">
+                    全部
+                </button>
+                <button class="category-pill px-6 py-2 rounded-full bg-white text-gray-700 shadow hover:shadow-md font-medium" data-category="strategy">
+                    产品策略
+                </button>
+                <button class="category-pill px-6 py-2 rounded-full bg-white text-gray-700 shadow hover:shadow-md font-medium" data-category="research">
+                    用户研究
+                </button>
+                <button class="category-pill px-6 py-2 rounded-full bg-white text-gray-700 shadow hover:shadow-md font-medium" data-category="agile">
+                    敏捷开发
+                </button>
+                <button class="category-pill px-6 py-2 rounded-full bg-white text-gray-700 shadow hover:shadow-md font-medium" data-category="storytelling">
+                    故事叙述
+                </button>
+                <button class="category-pill px-6 py-2 rounded-full bg-white text-gray-700 shadow hover:shadow-md font-medium" data-category="analysis">
+                    竞品分析
+                </button>
+                <button class="category-pill px-6 py-2 rounded-full bg-white text-gray-700 shadow hover:shadow-md font-medium" data-category="other">
+                    其他工具
+                </button>
+            </div>
+        </div>
+
+        <!-- Prompts Grid -->
+        <div id="promptsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Cards will be dynamically generated here -->
+        </div>
+
+        <!-- No Results -->
+        <div id="noResults" class="hidden text-center py-16">
+            <i class="fas fa-search text-6xl text-gray-300 mb-4"></i>
+            <h3 class="text-2xl font-semibold text-gray-600 mb-2">未找到相关提示词</h3>
+            <p class="text-gray-500">试试其他关键词或分类</p>
+        </div>
+    </main>
+
+    <!-- Modal for Prompt Details -->
+    <div id="promptModal" class="hidden fixed inset-0 z-50 modal-backdrop" onclick="closeModal(event)">
+        <div class="flex items-center justify-center min-h-screen px-4">
+            <div class="bg-white rounded-2xl shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-hidden fade-in" onclick="event.stopPropagation()">
+                <!-- Modal Header -->
+                <div class="gradient-bg text-white px-8 py-6 flex items-center justify-between">
+                    <div>
+                        <h3 id="modalTitle" class="text-2xl font-bold mb-1"></h3>
+                        <div id="modalCategory" class="text-purple-100"></div>
+                    </div>
+                    <button onclick="closeModal()" class="text-white hover:text-purple-200 transition">
+                        <i class="fas fa-times text-2xl"></i>
+                    </button>
+                </div>
+
+                <!-- Modal Body -->
+                <div class="p-8 overflow-y-auto max-h-[calc(90vh-200px)]">
+                    <div id="modalDescription" class="text-gray-700 mb-6 leading-relaxed"></div>
+
+                    <div class="bg-gray-50 rounded-xl p-6 mb-6">
+                        <h4 class="font-semibold text-gray-800 mb-3 flex items-center">
+                            <i class="fas fa-lightbulb text-yellow-500 mr-2"></i>
+                            使用场景
+                        </h4>
+                        <div id="modalUsage" class="text-gray-600"></div>
+                    </div>
+
+                    <div class="bg-gradient-to-r from-purple-50 to-blue-50 rounded-xl p-6">
+                        <h4 class="font-semibold text-gray-800 mb-3 flex items-center">
+                            <i class="fas fa-code text-purple-500 mr-2"></i>
+                            提示词预览
+                        </h4>
+                        <pre id="modalPrompt" class="text-sm text-gray-700 overflow-x-auto whitespace-pre-wrap font-mono bg-white p-4 rounded-lg"></pre>
+                    </div>
+                </div>
+
+                <!-- Modal Footer -->
+                <div class="px-8 py-6 bg-gray-50 border-t flex items-center justify-between">
+                    <div class="text-sm text-gray-500">
+                        点击复制按钮后，粘贴到 ChatGPT/Claude/Gemini 中使用
+                    </div>
+                    <button onclick="copyPromptFromModal()" class="gradient-bg text-white px-8 py-3 rounded-lg font-semibold hover:opacity-90 transition shadow-lg flex items-center space-x-2">
+                        <i class="fas fa-copy"></i>
+                        <span>复制完整提示词</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Copy Success Toast -->
+    <div id="copyToast" class="hidden fixed bottom-8 right-8 bg-green-500 text-white px-6 py-4 rounded-lg shadow-2xl copy-feedback flex items-center space-x-3 z-50">
+        <i class="fas fa-check-circle text-2xl"></i>
+        <div>
+            <div class="font-semibold">复制成功！</div>
+            <div class="text-sm text-green-100">已复制到剪贴板</div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t mt-16">
+        <div class="container mx-auto px-4 py-8">
+            <div class="text-center text-gray-600">
+                <p class="mb-2">基于 <a href="https://github.com/deanpeters/product-manager-prompts" target="_blank" class="text-purple-600 hover:text-purple-700 font-medium">Dean Peters 的 Product Manager Prompts</a></p>
+                <p class="text-sm text-gray-500">使用 Tailwind CSS 构建 • MIT License • Made with ❤️ for PMs</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="prompts-data.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
